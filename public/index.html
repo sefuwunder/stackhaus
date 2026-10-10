@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>stackhaus — a 3D architecture balancing game</title>
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏗️</text></svg>">
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/",
+    "cannon-es": "https://cdn.jsdelivr.net/npm/cannon-es@0.20.0/dist/cannon-es.js"
+  }
+}
+</script>
+</head>
+<body>
+<div id="scene"></div>
+
+<header class="hud hud-top">
+  <div class="brand"><span class="craneglyph">🏗️</span><div><h1>stackhaus</h1><p>jenga × tetris · build tall, stay balanced</p></div></div>
+  <div class="stats">
+    <div class="stat"><b id="hud-score">0</b><span>score</span></div>
+    <div class="stat"><b id="hud-height">0.0 m</b><span>height</span></div>
+    <div class="stat"><b id="hud-pieces">0</b><span>pieces</span></div>
+    <div class="stat"><b id="hud-best">0</b><span>best</span></div>
+  </div>
+  <div class="topbtns">
+    <button id="btn-help" title="How to play">?</button>
+    <button id="btn-mute" title="Sound">🔊</button>
+  </div>
+</header>
+
+<aside class="hud hud-next">
+  <div class="nextlabel">next</div>
+  <div id="next-piece" class="nextpiece"></div>
+</aside>
+
+<div class="hud hud-balance">
+  <div class="balabel">balance</div>
+  <div class="gauge"><div id="balance-dot" class="dot"></div><div class="cross"></div></div>
+</div>
+
+<div id="wobble" class="hud hud-wobble" hidden>⚠️ wobbling…</div>
+
+<div id="touch" class="touch">
+  <div class="tcluster">
+    <button data-k="a">◀</button><button data-k="w">▲</button><button data-k="d">▶</button><button data-k="s">▼</button>
+  </div>
+  <div class="tcluster">
+    <button data-k="yaw">⟳</button><button data-k="roll">⤒</button><button data-k="drop">⤓</button>
+  </div>
+</div>
+
+<div id="overlay" class="overlay" hidden>
+  <div id="overlay-card" class="card"></div>
+</div>
+
+<div class="hint">WASD move · Q/E rotate · R tip · Shift fast · Space drop · drag to orbit</div>
+
+<script type="module" src="/game.js"></script>
+</body>
+</html>
